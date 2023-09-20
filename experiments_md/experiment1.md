@@ -6,7 +6,7 @@
 
 姓名：章丽媛
 
-Github地址：<https://github.com/yourusername/python_course>
+Github地址：<https://github.com/shixiaoxiya/py_course_zly_/blob/main/experiments_pdf/experiment1.pdf>
 
 ---
 
@@ -288,33 +288,7 @@ git reset HEAD^
 git checkout pushed
 git revert HEAD
 ```
-请将实验过程中编写的代码和运行结果放在这里，注意代码需要使用markdown的代码块格式化，例如Git命令行语句应该使用下面的格式：
 
-![Git命令](/Experiments/img/2023-07-26-22-48.png)
-
-显示效果如下：
-
-```bash
-git init
-git add .
-git status
-git commit -m "first commit"
-```
-
-如果是Python代码，应该使用下面代码块格式，例如：
-
-![Python代码](/Experiments/img/2023-07-26-22-52-20.png)
-
-显示效果如下：
-
-```python
-def add_binary(a,b):
-    return bin(a+b)[2:]
-```
-
-代码运行结果的文本可以直接粘贴在这里。
-
-**注意：不要使用截图，Markdown文档转换为Pdf格式后，截图可能会无法显示。**
 
 ## 实验考查
 
@@ -455,3 +429,17 @@ def add_binary(a,b):
 ## 实验总结
 
 总结一下这次实验你学习和使用到的知识，例如：编程工具的使用、数据结构、程序语言的语法、算法、编程技巧、编程思想。
+
+    这个实验涉及到了许多方面的知识，包括编程工具的使用、数据结构、程序语言的语法、算法、编程技巧、编程思想。
+
+    1)编程工具的使用：这个实验主要使用了Git和Markdown。Git是一种版本控制系统，可以帮助程序员追踪和管理代码的变化。Markdown是一种轻量级的标记语言，用于编写格式化的文本。
+
+    2)数据结构：Markdown文件中的文本内容和格式信息可以视为一种数据结构。在这个实验中，你需要理解和操作这种数据结构，以便正确地编写和格式化文本。
+
+    3)程序语言的语法：Markdown有自己的语法规则，需要理解这些规则才能正确地编写Markdown文件。
+
+    4)算法：在这个实验中，需要理解和应用Git的工作流程，包括如何创建和合并分支，如何提交和推送代码等。
+
+    5)编程技巧：需要掌握一些编程技巧，例如如何安装和使用Git和Markdown编辑器，如何在编辑器中创建和编辑Markdown文件等。
+
+    6)编程思想：这个实验涉及到了版本控制和文档编写的思想。需要理解这些思想，以便正确地使用Git和Markdown来管理代码和文档。
