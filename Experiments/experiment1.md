@@ -86,8 +86,8 @@ git pull
 #### D1 配置git
 Git命令
 ```bash
-git config --globle user.name "shixiaoxiya"
-git config --globle user.email "shixiaoxiya@example.com"
+git config --global user.name "shixiaoxiya"
+git config --global user.email "shixiaoxiya@example.com"
 ```
 #### D2 创建项目
 创建一个要进行版本控制的项目。在系统中创建一个文件夹，将其命名为git_practice.在这个文件中，创建一个简单的Python程序：
