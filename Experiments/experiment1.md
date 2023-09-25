@@ -235,6 +235,10 @@ git commit -m "Starting over."
  git status
 ```
 ### 第三部分 learngitbranching.js.org
+
+完成结果
+![Learngitbranching.js.org](/Experiments/img/pp.jpg)
+
 #### 一、基础篇
 1. Git Commit
 编写的Git代码
