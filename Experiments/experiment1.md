@@ -80,34 +80,40 @@ git pull
 使用Markdown编辑器（例如VScode）编写本次实验的实验报告，包括[实验过程与结果](#实验过程与结果)、[实验考查](#实验考查)和[实验总结](#实验总结)，并将其导出为 **PDF格式** 来提交。
 
 ## 实验过程与结果
+### 第一部分 实验环境的安装
 
+顺利完成所有实验环境的安装。
 ### 第二部分 Git基础
 
-#### D1 配置git
-Git命令
+#### D.1 配置git
+Git命令:
 ```bash
 git config --global user.name "shixiaoxiya"
 git config --global user.email "shixiaoxiya@example.com"
 ```
-#### D2 创建项目
+#### D.2 创建项目
 创建一个要进行版本控制的项目。在系统中创建一个文件夹，将其命名为git_practice.在这个文件中，创建一个简单的Python程序：
 ```Python
 print("Hello Git world")
 ```
-#### D3 忽略文件
-#### D4 初始化仓库
-编写的Git代码
+#### D.3 忽略文件
+创建一个名为.gitignore的特殊文件，并在 其中添加一行内容
+```
+_pycache_/
+```
+#### D.4 初始化仓库
+打开一个终端窗口，切换到git_practice,并执行如下命令：
 ```bash
 git init
 ```
-运行结果
+运行结果，表明Git在git_practice中初始化来了一个空仓库。
 ```bash
 Initialized empty Git repository in C:/Users/章丽媛/Desktop/git_practice/.git/
 
 章丽媛@LAPTOP-G6MUIKPK MINGW64 ~/Desktop/git_practice (master)
 ```
 #### D5 检查状态
-编写的Git代码
+执行其他操作前，看一下项目的状态：
 ```bash
 git status
 ```
@@ -127,7 +133,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 章丽媛@LAPTOP-G6MUIKPK MINGW64 ~/Desktop/git_practice (master)
 ```
 #### D6 将文件加入仓库
-编写的Git代码
+下面将这两个文件加入仓库，再次检查状态：
 ```bash
 git add .
 git status
@@ -147,7 +153,7 @@ Changes to be committed:
 章丽媛@LAPTOP-G6MUIKPK MINGW64 ~/Desktop/git_practice (master)
 ```
 #### D7 执行提交
-编写的Git代码
+下面来执行第一次提交：
 ```bash
 git commit -m "Started project"
 ```
@@ -171,7 +177,7 @@ nothing to commit, working tree clean
 章丽媛@LAPTOP-G6MUIKPK MINGW64 ~/Desktop/git_practice (master)
 ```
 #### D8 查看历史提交记录
-编写的Git代码
+Git记录所有的项目提交。下面看一下提交历史：
 ```bash
 git log
 ```
@@ -186,24 +192,24 @@ Date:   Mon Sep 18 14:54:47 2023 +0800
 章丽媛@LAPTOP-G6MUIKPK MINGW64 ~/Desktop/git_practice (master)
 ```
 #### D9 第二次提交
-编写的Git代码
+为了展示版本控制的强大威力，我们需要修改项目并提交所做的修改。在hello_git.py中再添加一行代码：
+```
+print("Hello everyone.")
+```
+如果现在查看项目的状态，将发现Git这个文件发生了变化：
 ```bash
 git status
+git commit -am "Extended greeting"
+git status
+git log --pretty=online
 ```
-运行结果
-```bash
-On branch master
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        modified:   prac.py
 
-no changes added to commit (use "git add" and/or "git commit -a")
-
-章丽媛@LAPTOP-G6MUIKPK MINGW64 ~/Desktop/git_practice (master)
-```
 #### D10 放弃修改
-编写的Git代码
+下面来看看如何放弃所做的修改，恢复到上一个可行状态。首先在hell_git.py中再添加一行代码：
+```
+print("Oh no,I broke the project!")
+```
+如果要放弃刚刚的修改，则可以终端执行如下命令：
 ```bash
 git restore .
 git status
@@ -232,7 +238,7 @@ git init
 git status
 git add .
 git commit -m "Starting over."
- git status
+git status
 ```
 ### 第三部分 learngitbranching.js.org
 
@@ -240,67 +246,108 @@ git commit -m "Starting over."
 ![Learngitbranching.js.org](/Experiments/img/pp.jpg)
 
 #### 一、基础篇
+循序渐进地介绍Git主要命令：git commit; git branch; git merge; git rebase
 1. Git Commit
-编写的Git代码
-```bash
-git commit
-git commit
-```
+   
+    Git仓库中的提交记录保存（git commit）的是你的目录下所有文件的快照，就像是把整个目录复制，然后再粘贴一样，但比复制粘贴优雅许多。提交记录可以看作是项目的快照，它非常轻量，可以快速地在这些提交记录之间切换。
+
+    通关代码：
+    ```bash
+    git commit //生成C2节点
+    git commit //生成C3节点
+    ```
 2. Git Branch
-```bash
-git branch bugFix
-git checkout bugFix
-```
+
+    Git的分支也非常轻量。它们只是简单地指向某个提交记录——仅此而已。所以许多Git爱好者传颂：早建分支！多用分支！
+
+    这是因为即使创建再多的分支也不会造成储存或内存上的开销，并且按逻辑分解工作到不同的分支要比维护那些特别臃肿的分支简单多了。
+
+    在将分支和提交记录结合起来后，我们会看到两者如何协作。现在只要记住使用分支其实就相当于在说：“我想基于这个提交以及它所有的父提交进行新的工作。”
+
+    通关代码：
+    ```bash
+    git branch bugFix //生成分支bugFix
+    git checkout bugFix //切换到bugFix分支上
+    ```
 3. Git Merge
-```bash
-git checkout -b bugFix
-git commit
-git checkout master
-git commit
-git merge bugFix
-```
+   
+    将两个分支合并到一起的第一种方法
+    ```bash
+    git checkout -b bugFix //创建并切换分支bugFix
+    git commit //把bugFix分支增加C2节点
+    git checkout main //切换到main上
+    git commit ////在main分支增加C3节点
+    git merge bugFix //将bugFix分支的内容合并到main上
+    ```
 4. Git Rebase
-```bash
-git checkout -b bugFix
-git commit
-git checkout master
-git commit
-git checkout bugFix
-git rebase master
-```
+ 
+    将两个分支合并到一起的第二种方法
+
+    通关代码：
+    ```bash
+    git checkout -b bugFix //创建并切换分支bugFix
+    git commit //在bugFix上增加C2节点
+    git checkout main //切换到main上
+    git commit //在main上增加C3节点
+    git checkout bugFix //切换到bugFix分支上
+    git rebase main  //将bugFix分支上的内容合并到main上
+    ```
 #### 二、高级篇
 1. 分离HEAD
- ```bash
-git checkout c4
-```
+   
+    HEAD是一个对当前检出记录的符号引用——也就是指向正在其基础上工作的提交记录。
+    HEAD总是指向当前分支上最近一次提交记录。大多数修改提交书的Git命令都是从改变HEAD指向开始的。HEAD通常情况下是指向分支名的（如bugFix）。在提交时，改变了bugFix的状态，这一变化通过HEAD变得可见。
+
+    通关代码：
+    ```bash
+    git checkout c4
+    ```
 2. 相对引用（^）
- ```bash
- git checkout bugFix^
-或
-git chekcout bugFix
-git checkout HEAD^
-```
+   
+    通过指定提交记录哈希值的方式在Git中移动不太方便。在实际应用中，并没有像本程序这么漂亮的可视化提交树供你参考，所以你就不得不用git log来查看提交记录的哈希值。并且哈希值在真实的Git世界中也会更长（基于SHA-1，共40位）。比较令人欣慰的是，Git对哈希的处理很智能，秩序提供唯一标识提交记录的前几个字符即可，因此可以仅输入fed2而不是上面的一长串字符。由于通过哈希值指定提交记录很不方便，所以Git引入了相对引用。这个就很厉害了。使用相对引用的话，可以从一个易于记忆的地方（比如bugFix分支或者HEAD）开始计算。
+
+    通关代码：
+    ```bash
+    git checkout bugFix^
+    或
+    git chekcout bugFix
+    git checkout HEAD^
+    ```
 3. 相对引用2（~）
- ```bash
-git branch -f master c6
-git branch -f bugFix c0
-git checkout c1
-```
+
+    如果想在提交树中向上移动很多步的话，敲很多^貌似也挺烦人的，git也考虑到了这一点，于是又引入了操作符~。该操作符后面可以跟一个数字 （可选，不跟数字时与^相同，向上移动一次），指定向上移动多少次
+
+    通关代码：
+    ```bash
+    git branch -f master c6
+    git branch -f bugFix c0
+    git checkout c1
+    ```
 4. 撤销变更
- ```bash
-git reset HEAD^
-git checkout pushed
-git revert HEAD
-```
 
+    在git里撤销变更的方法很多，和提交一样，撤销变更由底层部分（暂存区的独立文件或者片段）和上层部门（变更到底是通过哪种方式被撤销的）组成。我们这个应用主要关注的是后者。主要有两种方法用来撤销变更——一是git reset，还有就是git revert
 
+    通关代码：
+    ```bash
+    git reset HEAD^
+    git checkout pushed
+    git revert HEAD
+    ```
+### 第四部分 Markdown基础
+查看[Markdown cheat-sheet](http://www.markdownguide.org/cheat-sheet)，学习Markdown的基础语法
+
+使用Markdown编辑器（例如VScode）编写本次实验的实验报告，包括[实验过程与结果](#实验过程与结果)、[实验考查](#实验考查)和[实验总结](#实验总结)，并将其导出为 **PDF格式** 来提交。
 ## 实验考查
 
 请使用自己的语言回答下面的问题，这些问题将在实验检查时用于提问和答辩，并要求进行实际的操作。
 
 1. 什么是版本控制？使用Git作为版本控制软件有什么优点？
    
-    版本控制是一种追踪和管理文件、代码或项目变化的方法。在软件开发中，版本控制是一种非常重要的管理工具，可以帮助开发者追踪代码的更改和历史，以确保代码的质量和可维护性。
+- 版本控制：
+
+   - 版本控制是一种追踪和管理文件、代码或项目变化的方法。在软件开发中，版本控制是一种非常重要的管理工具，可以帮助开发者追踪代码的更改和历史，以确保代码的质量和可维护性。它有助于记录文件的不同版本，并提供了一种协作工作的方式，多个人可以在同一个项目上同时工作而不会干扰彼此的工作。版本控制系统还允许您回溯到先前的项目状态，以便查找错误、比较不同版本以及管理项目的演化历史。
+
+- 优点：
 
     Git是一种广泛使用的版本控制系统，它允许开发团队成员在本地存储和管理代码库的更改，并与其他人协作开发项目。以下是使用Git作为版本控制软件的一些优点：
 
@@ -313,15 +360,26 @@ git revert HEAD
    - 广泛使用和支持：Git是一种广泛使用的版本控制系统，因此有很多资源和文档可供参考，也有很多现成的工具和插件可以使用。此外，Git还有强大的社区和用户支持，可以帮助用户解决问题和学习新技能。
 
    - 可扩展性和灵活性：Git具有高度的可扩展性和灵活性，可以适应不同的项目需求。它支持多种协议（如HTTP、SSH、FTP等）和存储后端（如磁盘、NFS、S3等），可以轻松地与其他工具和技术集成。
+   - 跨平台性：Git 可以在不同的操作系统上运行，包括Windows、macOS和Linux。
 
 2. 如何使用Git撤销还没有Commit的修改？如何使用Git检出（Checkout）已经以前的Commit？（实际操作）
-   对于还没有Commit的修改，可以使用以下两种方法撤销：
+   
+- 撤销未commit的修改
+   - 查看未提交的修改：首先，可以使用以下命令查看尚未提交的修改，以确保您知道要撤销的内容。
+    ```bash
+    git status
+    ```
+   - 撤销单个文件的修改：如果您只想撤销单个文件的修改，可以使用以下命令：
+    ```bash
+    git checkout -- 文件名
+    ```
+   - 撤销所有尚未提交的修改：如果您想撤销所有尚未提交的修改，可以使用以下命令：
+    ```bash
+    git reset --hard HEAD
+    ```
+  
 
-    - 想要撤销对某个文件的修改，可以运行git checkout -- filename命令。例如，想要撤销对test1文件的修改，可以运行git checkout -- test1。
-
-    - 如果想要撤销对所有文件的修改，可以运行git checkout .命令。
-
-    对于已经Commit的修改，可以使用以下方法检出（Checkout）到以前的Commit：
+- 对于已经Commit的修改，可以使用以下方法检出（Checkout）到以前的Commit：
 
     - 找到想要检出的Commit的ID，例如，想要检出到HEAD^，即上一次的Commit，可以使用git reset --hard HEAD^命令。
 
@@ -329,11 +387,14 @@ git revert HEAD
 
 3. Git中的HEAD是什么？如何让HEAD处于detached HEAD状态？（实际操作）
    
-   1)在Git中，HEAD是一个指向当前检出的分支的引用。当你执行git clone或git checkout操作时，Git会将HEAD设置为指向你正在检出的分支的最新提交。
+- HEAD是什么：
 
-   2)然而，有时你可能想要查看或编辑一个特定的提交，而不影响你当前检出的分支。在这种情况下，你可以将HEAD置于“detached HEAD”状态。在“detached HEAD”状态下，HEAD指向一个特定的提交，而不是一个分支。这意味着你可以自由地尝试提交，而不必担心会改变任何现有的分支。
+    在Git中，HEAD是一个指向当前检出的分支的引用。当你执行git clone或git checkout操作时，Git会将HEAD设置为指向你正在检出的分支的最新提交。
 
-    以下是如何将HEAD置于“detached HEAD”状态的步骤：
+- 如何让 HEAD 进入分离头指针状态：
+
+
+   有时你可能想要查看或编辑一个特定的提交，而不影响你当前检出的分支。在这种情况下，你可以将HEAD置于“detached HEAD”状态。在“detached HEAD”状态下，HEAD指向一个特定的提交，而不是一个分支。这意味着你可以自由地尝试提交，而不必担心会改变任何现有的分支。以下是如何将HEAD置于“detached HEAD”状态的步骤：
 
     首先，找到你想要查看或编辑的提交的哈希值。你可以通过git log命令查看提交历史，并找到你感兴趣的提交的哈希值。
 
@@ -427,23 +488,28 @@ git revert HEAD
     超链接：在Markdown中，超链接是通过方括号和圆括号创建的。方括号中包含链接的文本，圆括号中包含链接的URL。例如：
 
     ```markdown
-    这是一个链接到[网站](http://www.example.com)的示例。
-    以上就是在Markdown格式的文本中使用标题、数字列表、无序列表和超链接的方法。
+     [点击这里访问GitHub](https://github.com/)
+    ```
+    还可以为链接添加一个可选的标题，将标题放在引号中：
+    ```markdown
+    [点击这里访问GitHub](https://github.com/ "GitHub首页")
     ```
 ## 实验总结
 
 总结一下这次实验你学习和使用到的知识，例如：编程工具的使用、数据结构、程序语言的语法、算法、编程技巧、编程思想。
 
-    这个实验涉及到了许多方面的知识，包括编程工具的使用、数据结构、程序语言的语法、算法、编程技巧、编程思想。
 
-    1) 编程工具的使用：这个实验主要使用了Git和Markdown。Git是一种版本控制系统，可以帮助程序员追踪和管理代码的变化。Markdown是一种轻量级的标记语言，用于编写格式化的文本。
+- 编程工具的使用：这个实验主要使用了Git和Markdown。Git是一种版本控制系统，可以帮助程序员追踪和管理代码的变化。学会了如何在本地初始化Git仓库，以及如何配置Git全局设置。Markdown是一种轻量级的标记语言，用于编写格式化的文本。
 
-    2) 数据结构：Markdown文件中的文本内容和格式信息可以视为一种数据结构。在这个实验中，你需要理解和操作这种数据结构，以便正确地编写和格式化文本。
+- 数据结构：Markdown文件中的文本内容和格式信息可以视为一种数据结构。在这个实验中，你需要理解和操作这种数据结构，以便正确地编写和格式化文本。
 
-    3) 程序语言的语法：Markdown有自己的语法规则，需要理解这些规则才能正确地编写Markdown文件。
+- 程序语言的语法：Markdown有自己的语法规则，需要理解这些规则才能正确地编写Markdown文件。
 
-    4) 算法：在这个实验中，需要理解和应用Git的工作流程，包括如何创建和合并分支，如何提交和推送代码等。
+- 算法：在这个实验中，需要理解和应用Git的工作流程，包括如何创建和合并分支，初始化仓库、添加文件、提交更改、查看历史记录、如何提交和推送代码等。
 
-    5) 编程技巧：需要掌握一些编程技巧，例如如何安装和使用Git和Markdown编辑器，如何在编辑器中创建和编辑Markdown文件等。
+- 编程技巧：需要掌握一些编程技巧，例如如何安装和使用Git和Markdown编辑器，如何在编辑器中创建和编辑Markdown文件等。学习了如何与远程Git仓库进行交互，包括克隆远程仓库、推送本地更改和拉取远程更改。
+了解了协作开发时的常见工作流程，如合并请求（Pull Request）等。
 
-    6) 编程思想：这个实验涉及到了版本控制和文档编写的思想。需要理解这些思想，以便正确地使用Git和Markdown来管理代码和文档。
+- 编程思想：这个实验涉及到了版本控制和文档编写的思想。需要理解这些思想，以便正确地使用Git和Markdown来管理代码和文档。
+  
+  总的来说，这次实验强调了版本控制、分支管理、冲突解决和文本排版等编程和文档处理的重要概念和技能。这些技能对于日后的软件开发和协作工作将非常有用。
