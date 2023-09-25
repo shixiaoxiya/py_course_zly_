@@ -300,7 +300,7 @@ git status
 
     通关代码：
     ```bash
-    git checkout c4
+    git checkout c4 
     ```
 2. 相对引用（^）
    
@@ -319,9 +319,9 @@ git status
 
     通关代码：
     ```bash
-    git branch -f master c6
+    git branch -f master c6 //分支master直接指向C6
     git branch -f bugFix c0
-    git checkout c1
+    git checkout c1 //HEAD指向C1 
     ```
 4. 撤销变更
 
@@ -329,9 +329,9 @@ git status
 
     通关代码：
     ```bash
-    git reset HEAD^
+    git reset HEAD^ //撤销本地分支用reset 
     git checkout pushed
-    git revert HEAD
+    git revert HEAD //撤销远程分支用revert
     ```
 ### 第四部分 Markdown基础
 查看[Markdown cheat-sheet](http://www.markdownguide.org/cheat-sheet)，学习Markdown的基础语法
