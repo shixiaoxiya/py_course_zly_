@@ -420,11 +420,8 @@ flowchart LR
 #### 第2题:弹跳的球 (Bouncing Balls)
 
 ```mermaid
-flowchart LR
-    B{输入条件\n是否有效？} -->|No| C[返回-1]
-    C --> K[end]
-    B -->|Yes| D[初始化通过\n窗户的\n次数pas]
-    D --> E{h>window}
+flowchart LR 
+    DD[初始化\n通过窗户\n的次数pas] --> E{h>window}
     E -->|Yes| F[pas+=1\nh*=bounce]
     F --> H{h>window}
     H -->|Yes| I[pas+=1]
