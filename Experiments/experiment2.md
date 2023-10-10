@@ -342,15 +342,15 @@ def bouncing_ball(h, bounce, window):
     if not (h > 0 and 0 < bounce < 1 and window < h):
         return -1
     
-    passes = 0  # 记录通过窗户的次数
+    pas = 0  # 记录通过窗户的次数
     
     while h > window:
-        passes += 1  # 小球在下落时通过窗户
+        pas += 1  # 小球在下落时通过窗户
         h *= bounce  # 小球弹起
         
         if h > window:
-            passes += 1  # 小球在弹起时通过窗户
-    return passes
+            pas += 1  # 小球在弹起时通过窗户
+    return pas
 
 ```
 
@@ -423,15 +423,15 @@ flowchart LR
 flowchart LR
     B{输入条件\n是否有效？} -->|No| C[返回-1]
     C --> K[end]
-    B -->|Yes| D[初始化通过\n窗户的\n次数passes]
-    D --> E{h > window}
-    E -->|Yes| F[passes+=1]
+    B -->|Yes| D[初始化通过\n窗户的\n次数pas]
+    D --> E{h>window}
+    E -->|Yes| F[pas+=1]
     F --> G[h*=bounce]
     G --> H{h>window}
-    H -->|Yes| I[passes+=1]
+    H -->|Yes| I[pas+=1]
     I --> H{h>window}
     H -->|No| E{h>window}
-    E -->|No| J[返回\npasses]
+    E -->|No| J[返回\npas]
     J --> K[end]
 
 ```
@@ -440,10 +440,10 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A[start] --> B[输入字符串]
-    B --> C[初始化计数器\ncount]
-    C --> D[遍历字符串中\n的每个字符]
-    D --> E{字符是否为\n元音字符？}
+    A[start] --> B[输入\n字符串]
+    B --> C[初始化\ncount]
+    C --> D[遍历字符串\n中的字符]
+    D --> E{字符是否为\n元音字符?}
     E -->|Yes| F[count+=1]
     F --> D
     E -->|No| G[返回\ncount]
