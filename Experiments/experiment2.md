@@ -421,8 +421,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A[start] --> B{输入条件
-                    是否有效？}
+    A[start] --> B{输入条件\n是否有效？}
     B -->|No| C[返回-1]
     C --> K[end]
     B -->|Yes| D[初始化通过窗户\n的次数passes]
@@ -444,8 +443,7 @@ flowchart LR
 flowchart LR
     A[start] --> B[输入字符串]
     B --> C[初始化计数器count]
-    C --> D[遍历字符串中的
-            每个字符]
+    C --> D[遍历字符串中的\n每个字符]
     D --> E{字符是否为\n元音字符？}
     E -->|Yes| F[count+=1]
     F --> D
