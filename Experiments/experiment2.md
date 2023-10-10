@@ -408,12 +408,9 @@ def even_or_odd(number):
 ```mermaid
 flowchart LR
     A[start] --> B[计算n的平方根]
-    B --> C[计算比n小的
-            最大平方数lower]
-    C --> D[计算比n大的
-            最小平方数upper]
-    D --> E{n与lower的差\n小于等于
-            n与upper的差吗}
+    B --> C[计算比n小的\n最大平方数lower]
+    C --> D[计算比n大的\n最小平方数upper]
+    D --> E{n与lower的差\n小于等于\nn与upper的差吗}
     E -->|Yes| F[返回lower]
     F --> G[end]
     E -->|No| H[返回upper]
@@ -428,8 +425,7 @@ flowchart LR
                     是否有效？}
     B -->|No| C[返回-1]
     C --> K[end]
-    B -->|Yes| D[初始化通过窗户
-                的次数passes]
+    B -->|Yes| D[初始化通过窗户\n的次数passes]
     D --> E{h > window}
     E -->|Yes| F[passes+=1]
     F --> G[h*=bounce]
@@ -450,8 +446,7 @@ flowchart LR
     B --> C[初始化计数器count]
     C --> D[遍历字符串中的
             每个字符]
-    D --> E{字符是否为
-            元音字符？}
+    D --> E{字符是否为\n元音字符？}
     E -->|Yes| F[count+=1]
     F --> D
     E -->|No| G[返回count]
