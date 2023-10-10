@@ -421,18 +421,17 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A[start] --> B{输入条件\n是否有效？}
-    B -->|No| C[返回-1]
+    B{输入条件\n是否有效？} -->|No| C[返回-1]
     C --> K[end]
-    B -->|Yes| D[初始化通过窗户\n的次数passes]
+    B -->|Yes| D[初始化通过\n窗户的\n次数passes]
     D --> E{h > window}
     E -->|Yes| F[passes+=1]
     F --> G[h*=bounce]
     G --> H{h>window}
     H -->|Yes| I[passes+=1]
     I --> H{h>window}
-    H -->|No| E{h > window}
-    E -->|No| J[返回passes]
+    H -->|No| E{h>window}
+    E -->|No| J[返回\npasses]
     J --> K[end]
 
 ```
@@ -442,12 +441,12 @@ flowchart LR
 ```mermaid
 flowchart LR
     A[start] --> B[输入字符串]
-    B --> C[初始化计数器count]
-    C --> D[遍历字符串中的\n每个字符]
+    B --> C[初始化计数器\ncount]
+    C --> D[遍历字符串中\n的每个字符]
     D --> E{字符是否为\n元音字符？}
     E -->|Yes| F[count+=1]
     F --> D
-    E -->|No| G[返回count]
+    E -->|No| G[返回\ncount]
     G --> H[end]
 ```
 
