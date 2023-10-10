@@ -425,9 +425,8 @@ flowchart LR
     C --> K[end]
     B -->|Yes| D[初始化通过\n窗户的\n次数pas]
     D --> E{h>window}
-    E -->|Yes| F[pas+=1]
-    F --> G[h*=bounce]
-    G --> H{h>window}
+    E -->|Yes| F[pas+=1\nh*=bounce]
+    F --> H{h>window}
     H -->|Yes| I[pas+=1]
     I --> H{h>window}
     H -->|No| E{h>window}
