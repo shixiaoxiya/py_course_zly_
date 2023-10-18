@@ -1,14 +1,14 @@
 # 实验三 Python列表
 
-班级： 21计科1
+班级： 21计科2班
 
-学号： 202302200000
+学号： B20210302209
 
-姓名： 张三
+姓名： 章丽媛
 
-Github地址：<https://github.com/yourusername/python_course>
+Github地址：<https://github.com/shixiaoxiya/py_course_zly_>
 
-CodeWars地址：<https://www.codewars.com/users/yourusername>
+CodeWars地址：<https://www.codewars.com/users/shixiaoxiya>
 
 ---
 
