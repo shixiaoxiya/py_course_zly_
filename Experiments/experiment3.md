@@ -1255,8 +1255,8 @@ def disemvowel(string_):
 ```mermaid
 graph LR
 A[开始] --> B{是否有number}
-B --> |有| C[生成从0到number-1]
-C --> D[生成从0到number-1，n3或者5的倍数]
+B --> |有| C[生成0到number-1]
+C --> D[生成0到number-1，n3或者5的倍数]
 D --> E[返回结果]
 B --> |无| F[结束]
 ```
