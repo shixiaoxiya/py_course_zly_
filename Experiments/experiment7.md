@@ -1,14 +1,14 @@
 # 实验七 Python面向对象编程
 
-班级： 21计科1
+班级： 21计科2班
 
-学号： 202302200000
+学号： B20210302209
 
-姓名： 张三
+姓名： 章丽媛
 
-Github地址：<https://github.com/yourusername/python_course>
+Github地址：<https://github.com/shixiaoxiya/py_course_zly_/blob/main/Experiments/experiment7.md>
 
-CodeWars地址：<https://www.codewars.com/users/yourusername>
+CodeWars地址：<https://www.codewars.com/users/shixiaoxiya>
 
 ---
 
@@ -279,48 +279,833 @@ classDiagram
 
 ## 实验过程与结果
 
-请将实验过程与结果放在这里，包括：
+### 第一部分 Python面向对象编程
 
-- [第一部分 Python面向对象编程](#第一部分)
-- [第二部分 Codewars Kata挑战](#第二部分)
-- [第三部分 使用Mermaid绘制程序流程图](#第三部分)
-
-注意代码需要使用markdown的代码块格式化，例如Git命令行语句应该使用下面的格式：
-
-![Git命令](/Experiments/img/2023-07-26-22-48.png)
-
-显示效果如下：
-
-```bash
-git init
-git add .
-git status
-git commit -m "first commit"
-```
-
-如果是Python代码，应该使用下面代码块格式，例如：
-
-![Python代码](/Experiments/img/2023-07-26-22-52-20.png)
-
-显示效果如下：
+#### 9-1
 
 ```python
-def add_binary(a,b):
-    return bin(a+b)[2:]
+class Restaurant():
+
+    def __init__(self,restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+
+    def describe_restaurant(self):
+        print(f"restaurant name is {self.restaurant_name}")
+        print(f"cuisine type is {self.cuisine_type}")
+
+    def open_restaurant(self):
+        print("Open")
+
+restaurant = Restaurant("chuancai", "hot pot")
+
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
 ```
 
-代码运行结果的文本可以直接粘贴在这里。
+运行结果
 
-**注意：不要使用截图，Markdown文档转换为Pdf格式后，截图可能会无法显示。**
+```python
+restaurant name is chuancai
+cuisine type is hot pot
+Open
+```
+
+#### 9-3
+
+```python
+class User():
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    def describe_user(self):
+        print(f"username is: " + self.first_name + " "+ self.last_name)
+
+    def greet_user(self):
+        print("hello, {}! ".format(self.last_name))
+
+user_1 = User("John","Smith")
+user_1.describe_user()
+user_1.greet_user()
+
+user_2 =User("xiao", "ming")
+user_2.describe_user()
+user_2.greet_user()
+```
+
+运行结果
+
+```python
+username is: John Smith
+hello, Smith!
+username is: xiao ming
+hello, ming!
+```
+
+#### 9-4
+
+```python
+class Restaurant():
+
+    def __init__(self,restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+        self.number_served = 0
+
+    def describe_restaurant(self):
+        print(f"restaurant name is {self.restaurant_name}")
+        print(f"cuisine type is {self.cuisine_type}")
+
+    def open_restaurant(self):
+        print("Open")
+
+    def set_number_served(self, number):
+        self.number_served = number
+        print(f"{self.number_served} person has served!")
+
+    def increment_number_served(self, numbers):
+        self.number_served += numbers
+        print(f"{self.number_served} person has served!")
+
+restaurant = Restaurant("chuancai", "hot pot")
+restaurant.set_number_served(10)
+restaurant.increment_number_served(20)
+restaurant.increment_number_served(30)
+```
+
+运行结果
+
+```python
+10 person has served!
+30 person has served!
+60 person has served!
+```
+
+#### 9-5
+
+```python
+class User():
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.login_attempts = 0
+
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+
+    def reset_login_attempts(self):
+        self.login_attempts = 0
+
+user_1 = User("John","Smith")
+user_1.increment_login_attempts()
+user_1.increment_login_attempts()
+user_1.increment_login_attempts()
+print(user_1.login_attempts)
+
+user_1.reset_login_attempts()
+print(user_1.login_attempts)
+```
+
+运行结果
+
+```python
+0
+3
+0
+```
+
+#### 9-6
+
+```python
+class Restaurant():
+
+    def __init__(self,restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+
+    def describe_restaurant(self):
+        print(f"restaurant name is {self.restaurant_name}")
+        print(f"cuisine type is {self.cuisine_type}")
+
+    def open_restaurant(self):
+        print("Open")
+
+class IceCreamStand(Restaurant):
+    def __init__(self, restaurant_name, cuisine_type):
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = []
+
+    def show_icecream(self):
+        for flavor in self.flavors:
+            print(flavor)
+
+icecream = IceCreamStand("haagen-Dazs", "icecream")
+icecream.flavors = ["a", "b", "c"]
+
+icecream.show_icecream()
+```
+
+运行结果
+
+```python
+a
+b
+c
+```
+
+#### 9-7
+
+```python
+class User():
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    def describe_user(self):
+        print(f"username is: " + self.first_name + " "+ self.last_name)
+
+    def greet_user(self):
+        print("hello, {}! ".format(self.last_name))
+
+class Admin(User):
+    def __init__(self, first_name, last_name):
+        super().__init__(first_name, last_name)
+        self.privileges =["can add post", "can delete post", "can ban user"]
+
+    def show_privileges(self):
+        for privilege in self.privileges:
+            print(privilege)
+
+admin = Admin("John", "Smith")
+
+admin.show_privileges()
+```
+
+运行结果
+
+```python
+can add post
+can delete post
+can ban user
+```
+
+#### 9-8
+
+```python
+class User():
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    def describe_user(self):
+        print(f"username is: " + self.first_name + " "+ self.last_name)
+
+    def greet_user(self):
+        print("hello, {}! ".format(self.last_name))
+
+
+class Privileges():
+    def __init__(self):
+        self.privileges =["can add post", "can delete post", "can ban user"]
+
+    def show_privileges(self):
+        for privilege in self.privileges:
+            print(privilege)
+
+class Admin(User):
+    def __init__(self, first_name, last_name):
+        super().__init__(first_name, last_name)
+        self.privilege = Privileges()
+
+    def show_privileges(self):
+        self.privilege.show_privileges()
+
+admin = Admin("John", "Smith")
+
+admin.show_privileges()
+```
+
+运行结果
+
+```python
+can add post
+can delete post
+can ban user
+```
+
+#### 9-9
+
+```python
+class Car():
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        long_name = str(self.year) + ' ' + self.make + ' ' + self.model
+        return long_name.title()
+
+class Battery():
+    """一次模拟电动汽车电瓶的简单尝试"""
+
+    def __init__(self, battery_size=60):
+        """初始化电瓶的属性"""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """打印一条描述电瓶容量的消息"""
+        print("This car has a " + str(self.battery_size) + "-kWh battery.")
+
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 60:
+            range1 = 140
+        elif self.battery_size == 85:
+            range1 = 185
+
+        message = "This car can go approximately " + str(range1)
+        message += " miles on a full charge."
+        print(message)
+
+    def upgrade_battery(self):
+        self.battery_size = 85
+
+class ElectricCar(Car):
+
+    def __init__(self, manufacturer, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(manufacturer, model, year)
+        self.battery = Battery()
+
+
+my_tesla = ElectricCar('tesla', 'model s', 2016)
+my_tesla.battery.get_range()
+my_tesla.battery.upgrade_battery()
+my_tesla.battery.get_range()
+```
+
+运行结果
+
+```python
+This car can go approximately 140 miles on a full charge.
+This car can go approximately 185 miles on a full charge.
+```
+
+#### 9-13
+
+```python
+from collections import OrderedDict
+
+dicts = {'list': '列表', 'str': '字符串', 'tuple': '元组', 'dict': '字典', 'int': '整型' }
+
+dicts['split'] = '切片'
+dicts['if'] =  '条件'
+dicts['class'] = '类'
+dicts['object'] = '对象'
+dicts['boolean'] = '布尔'
+
+order_dicts = OrderedDict()
+for key, value in dicts.items():
+    order_dicts[key] = value
+
+for key, value in order_dicts.items():
+    print(f"{key} : {value}")
+```
+
+运行结果
+
+```python
+list : 列表
+str : 字符串
+tuple : 元组
+dict : 字典
+int : 整型
+split : 切片
+if : 条件
+class : 类
+object : 对象
+boolean : 布尔
+```
+
+#### 9-14
+
+```python
+from random import randint
+x = randint(1, 6)
+```
+
+```python
+from random import randint
+
+class Die():
+    def __init__(self, sides=6):
+        self.sides = sides
+
+    def roll_die(self):
+        x = randint(1, self.sides)
+        print(x, end=" ")
+
+print("\n-----------6------------")
+dice_6 = Die()
+
+i = 0
+while i < 10:
+    dice_6.roll_die()
+    i = i + 1
+
+print("\n-----------10------------")
+dice_10 = Die(10)
+
+i = 0
+while i < 10:
+    dice_6.roll_die()
+    i = i + 1
+
+    dice_10 = Die(10)
+
+print("\n-----------20------------")
+dice_6 = Die(20)
+i = 0
+while i < 10:
+    dice_6.roll_die()
+    i = i + 1
+```
+
+运行结果
+
+```python
+-----------6------------
+4 4 1 1 2 2 6 3 5 3
+-----------10------------
+5 4 4 3 2 6 4 2 1 2
+-----------20------------
+8 8 3 13 20 17 5 4 16 11
+```
+
+### 第二部分 Codewars Kata挑战
+
+#### 第一题 面向对象的海盗
+
+**代码**
+
+```python
+class Ship:
+        
+    def __init__(self, draft, crew):
+        self.draft = draft
+        self.crew = crew
+    
+    def is_worth_it(self):
+        return self.draft - self.crew * 1.5 > 20    
+        
+Titanic = Ship(15, 10)
+print(Titanic.is_worth_it())
+
+treasure_ship = Ship(35.1, 10)
+print(treasure_ship.is_worth_it())
+
+```
+
+**运行成功截图**
+
+![1](/Experiments/img/71.jpg)
+
+#### 第二题 搭建积木
+
+**代码**
+
+```python
+class Block:
+    
+    def __init__(self, args):
+        self.width = args[0]
+        self.length = args[1]
+        self.height = args[2]
+        
+    def get_width(self):
+        return self.width
+    
+    def get_length(self):
+        return self.length
+    
+    def get_height(self):
+        return self.height
+    
+    def get_volume(self):
+        return self.width * self.length * self.height
+    
+    def get_surface_area(self):
+        return 2 * (self.width * self.length + self.width * self.height + self.length * self.height)
+```
+
+**运行成功截图**
+
+![1](/Experiments/img/72.jpg)
+
+#### 第三题 分页助手
+
+**代码**
+
+```python
+import math
+
+class PaginationHelper:
+    
+    def __init__(self, collection, items_per_page):
+        self.collection = collection
+        self.items_per_page = items_per_page
+        
+    def item_count(self):
+        return len(self.collection)
+    
+    # 总页数
+    def page_count(self):
+        
+        # 总条目数 / 每页条目数，然后向上取整
+        return math.ceil(self.item_count() / self.items_per_page)
+    
+    def page_item_count(self, page_index):
+        
+        # 页数为负数或者页数超过总页数
+        if page_index < 0 or page_index >= self.page_count():
+            return -1
+
+        # 最后一页
+        elif page_index == self.page_count() - 1: 
+            
+            # 如果是6%4，那么最后一页就是2
+            # 如果是8%4，那么最后一页就是0，说明最后一页是满的，应该返回4
+            last_page = self.item_count() % self.items_per_page
+            
+            return self.items_per_page if last_page == 0 else last_page
+        
+        # 其他页
+        else:
+            return self.items_per_page
+        
+    def page_index(self, item_index):
+        # 非法的情况
+        if item_index < 0 or item_index >= self.item_count():
+            return -1
+        else:
+            return item_index // self.items_per_page
+```
+
+**运行成功截图**
+
+![1](/Experiments/img/73.jpg)
+
+#### 第四题 向量（Vector）类
+
+**代码**
+
+```python
+from math import sqrt
+
+class Vector:
+
+    def __init__(self, iterable):
+        self._v = tuple(x for x in iterable)
+
+    # 把打印元组时的空格去掉
+    def __str__(self):
+        return str(self._v).replace(' ', '')
+    
+    # 检查两个向量是否长度相等    
+    def check(self, other):
+        if not len(self._v) == len(other._v):
+            raise ValueError('Vectors of different length')
+
+    def add(self, other):
+        self.check(other)
+        return Vector(s + o for s, o in zip(self._v, other._v))
+
+    def subtract(self, other):
+        self.check(other)
+        return Vector(s - o for s, o in zip(self._v, other._v))
+
+    def dot(self, other):
+        self.check(other)
+        return sum(s * o for s, o in zip(self._v, other._v))
+
+    def norm(self):
+        return sqrt(sum(sqrt(x) for x in self._v))
+
+    def equals(self, other):
+        return self._v == other._v
+```
+
+**运行成功截图**
+
+![1](/Experiments/img/74.jpg)
+
+#### 第五题 Codewars风格的等级系统
+
+**代码**
+
+```python
+class User ():    
+    def __init__ (self):
+        self.RANKS = [-8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6, 7, 8]
+        self.rank = -8
+        self.rank_index = 0
+        self.progress = 0
+        
+    def inc_progress (self, rank):
+        rank_index = self.RANKS.index(rank)
+        
+        if rank_index == self.rank_index:
+            self.progress += 3
+        elif rank_index == self.rank_index - 1:
+            self.progress += 1
+        elif rank_index > self.rank_index:
+            difference = rank_index - self.rank_index
+            self.progress += 10 * difference * difference
+            
+        while self.progress >= 100:
+            self.rank_index += 1
+            self.rank = self.RANKS[self.rank_index]
+            self.progress -= 100    
+        
+        if self.rank == 8:
+            self.progress = 0
+            return
+```
+
+**运行成功截图**
+
+![1](/Experiments/img/75.jpg)
+
+### 第三部分 使用Mermaid绘制程序流程图
+
+#### 第一题 面向对象的海盗
+
+```mermaid
+graph LR
+A[开始] -->|draft, crew| B(初始化)
+B --> C{is_worth_it?}
+C -->|是| D[输出True]
+C -->|否| E[输出False]
+
+```
+
+#### 第二题 搭建积木
+
+```mermaid
+graph LR
+    A[开始] -->|初始化| B(Block)
+    B --> C{获取宽度}
+    C -->|返回宽度| D[宽度]
+    B --> E{获取长度}
+    E -->|返回长度| F[长度]
+    B --> G{获取高度}
+    G -->|返回高度| H[高度]
+    B --> I{获取体积}
+    I --> J{计算体积}
+    J -->|返回体积| K[体积]
+    B --> L{获取表面积}
+    L --> M{计算表面积}
+    M -->|返回表面积| N[表面积]
+
+```
+
+#### 第三题 分页助手
+
+```mermaid
+graph LR
+    A[开始] -->|初始化| B(PaginationHelper)
+    B --> C{获取总条目数}
+    C -->|返回长度| D[总条目数]
+    C --> E{计算总页数}
+    E -->|使用 math.ceil向上取整| F[总页数]
+    C --> G{计算每页条目数}
+    G --> H[每页条目数]
+    C --> I{计算指定页的条目数}
+    I --> J[页索引]
+    J -->|页数为负数或超过总页数| K[返回 -1]
+    J -->|最后一页| L{计算最后一页的条目数}
+    L -->|如果最后一页是满的| M[返回每页条目数]
+    L -->|否则| N[返回最后一页的条目数]
+    J -->|其他页| O[返回每页条目数]
+    C --> P{计算指定条目索引所在的页索引}
+    P -->|非法情况| Q[返回 -1]
+    P -->|合法情况| R[返回页索引]
+
+    Q -->|结束| S[错误]
+    R -->|结束| T[结束]
+
+```
+
+#### 第四题 向量（Vector）类
+
+```mermaid
+graph LR
+    A[开始] -->|初始化| B(Vector)
+    B -->|将输入存储为元组| C{覆盖 __str__ 方法}
+    C --> D{检查向量是否具有相等的长度}
+    D -->|是| E{执行向量加法}
+    D -->|否| F{引发 ValueError}
+    E -->|逐元素相加| G(Vector)
+    G --> H{覆盖 __str__ 方法}
+    H --> I{检查向量是否具有相等的长度}
+    I -->|是| J{执行向量减法}
+    I -->|否| K{引发 ValueError}
+    J -->|逐元素相减| L(Vector)
+    L --> M{覆盖 __str__ 方法}
+    M --> N{检查向量是否具有相等的长度}
+    N -->|是| O{执行点积运算}
+    N -->|否| P{引发 ValueError}
+    O -->|逐元素相乘并求和| Q(Vector)
+    Q --> R{计算欧几里得范数}
+    R --> S{平方和的平方根}
+    S -->|返回范数| T(Vector)
+    T --> U{检查向量是否相等}
+    U -->|是| V{返回 True}
+    U -->|否| W{返回 False}
+    F -->|引发 ValueError| X[错误]
+    K -->|引发 ValueError| X
+    P -->|引发 ValueError| X
+    V -->|返回 True| Y[真]
+    W -->|返回 False| Z[假]
+    X -->|结束| Y
+    Y -->|结束| Z
+
+
+```
+
+#### 第五题 Codewars风格的等级系统
+
+```mermaid
+graph LR
+    A[Start] -->|Initialize| B(User)
+    B -->|rank = -8, rank_index = 0, progress = 0| C{Rank Index == Given Rank Index?}
+    C -->|Yes| D{Rank Index == Rank Index - 1?}
+    C -->|No| E{Rank Index > Rank Index}
+    D -->|Yes| F{Increment progress by 3}
+    D -->|No| G{Increment progress by 1}
+    E -->|Yes| H{Calculate Difference}
+    E -->|No| I{End}
+    H --> J{Increment progress by 10 * Difference^2}
+    J -->|Check if progress >= 100| K{Yes}
+    K --> L{Increment Rank Index and Set New Rank}
+    K -->|No| I
+    L -->|Set Rank to new Rank| M{Check if Rank == 8}
+    M -->|Yes| N{Reset progress to 0}
+    M -->|No| O{End}
+
+    O -->|End| P[End]
+    I -->|End| P
+
+```
 
 ## 实验考查
 
 请使用自己的语言并使用尽量简短代码示例回答下面的问题，这些问题将在实验检查时用于提问和答辩以及实际的操作。
 
-1. Python的类中__init__方法起什么作用？
-2. Python语言中如何继承父类和改写（override）父类的方法。
-3. Python类有那些特殊的方法？它们的作用是什么？请举三个例子并编写简单的代码说明。
+**1. Python的类中__init__方法起什么作用？**
+
+Python中的__init__方法是一种特殊的方法，用于在创建类的实例时进行初始化操作。这意味着在实例化对象时，__init__方法会自动被调用，允许我们完成对实例的初始化工作，比如设置实例的属性或执行一些必要的设置操作。
+
+```python
+class MyClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+obj = MyClass(10, 20)
+print(obj.x)  # 输出：10
+print(obj.y)  # 输出：20
+```
+
+在上面的示例中，__init__方法允许我们在创建MyClass类的实例时为其设置x和y属性的初始值。
+
+**2. Python语言中如何继承父类和改写（override）父类的方法。**
+
+在Python中，要继承父类并重写（override）父类的方法，你可以创建一个新的子类，并在子类中定义与父类同名的方法。这样，子类就会继承父类的方法，但是可以在子类中重新定义这个方法，从而改变其行为。
+
+下面是一个简单的示例：
+
+```python
+class ParentClass:
+    def some_method(self):
+        print("父类的方法")
+
+class ChildClass(ParentClass):
+    def some_method(self):  # 重写父类的方法
+        print("子类重写父类的方法")
+
+obj = ChildClass()
+obj.some_method()  # 输出：子类重写父类的方法
+```
+
+在这个示例中，ChildClass继承自ParentClass，并重写了some_method方法。当你调用some_method方法时，会执行子类中重写过的方法，而不是父类中的原始方法。
+
+**3. Python类有那些特殊的方法？它们的作用是什么？请举三个例子并编写简单的代码说明。**
+
+Python类中有许多特殊的方法，也被称为魔术方法或双下划线方法（dunder methods），它们以双下划线开头和结尾。这些特殊方法允许我们自定义类的行为，比如实现算术运算、上下文管理、对象比较等。
+
+以下是三个常用的特殊方法及其作用的示例：
+
+- __init__ 方法：用于在创建对象时进行初始化操作。
+
+```python
+class MyClass:
+    def __init__(self, x):
+        self.x = x
+
+obj = MyClass(10)
+print(obj.x)  # 输出：10
+```
+
+- __str__ 方法：用于返回对象的字符串表示，可在打印对象时调用。
+
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f"Point({self.x}, {self.y})"
+
+p = Point(3, 4)
+print(p)  # 输出：Point(3, 4)
+```
+- __add__ 方法：用于实现对象的加法运算。
+  
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+result = p1 + p2
+print(result.x, result.y)  # 输出：4 6
+```
 
 ## 实验总结
 
 总结一下这次实验你学习和使用到的知识，例如：编程工具的使用、数据结构、程序语言的语法、算法、编程技巧、编程思想。
+
+在本次实验中，我学习和使用了以下知识：
+
+编程语言 Python：掌握了Python类的基本定义、继承、方法重写等相关语法知识，并且学习了Python中特殊方法的使用。
+
+编程工具的使用：通过与您的互动，我应用了Python编程语言来解释和演示相关概念。作为一名AI助手，我能够灵活地运用这些工具来满足您的需求。
+
+编程技巧：在示例中展示了如何创建类、定义初始化方法、重写父类方法以及使用特殊方法等编程技巧，这些技巧对于构建更复杂的程序和解决实际问题非常重要。
+
+编程思想：通过演示特殊方法的使用，展现了面向对象编程（OOP）的核心思想，包括封装、继承和多态，这些思想有助于构建模块化、可维护和可扩展的程序。
+
+总的来说，本次实验帮助我进一步加深了对Python面向对象编程的理解，并提升了我在编程方面的技能和知识水平。
