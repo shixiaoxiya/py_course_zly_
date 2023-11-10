@@ -887,120 +887,79 @@ class User ():
 #### 第一题 面向对象的海盗
 
 ```mermaid
-graph LR
-A[开始] -->|draft, crew| B(初始化)
-B --> C{is_worth_it?}
-C -->|是| D[输出True]
-C -->|否| E[输出False]
-
+classDiagram
+    class Ship {
+        - draft
+        - crew
+        + __init__(draft, crew)
+        + is_worth_it()
+    }
 ```
 
 #### 第二题 搭建积木
 
 ```mermaid
-graph LR
-    A[开始] -->|初始化| B(Block)
-    B --> C{获取宽度}
-    C -->|返回宽度| D[宽度]
-    B --> E{获取长度}
-    E -->|返回长度| F[长度]
-    B --> G{获取高度}
-    G -->|返回高度| H[高度]
-    B --> I{获取体积}
-    I --> J{计算体积}
-    J -->|返回体积| K[体积]
-    B --> L{获取表面积}
-    L --> M{计算表面积}
-    M -->|返回表面积| N[表面积]
+classDiagram
+    class Block {
+        - width
+        - length
+        - height
+        + __init__(args)
+        + get_width()
+        + get_length()
+        + get_height()
+        + get_volume()
+        + get_surface_area()
+    }
+
 
 ```
 
 #### 第三题 分页助手
 
 ```mermaid
-graph LR
-    A[开始] -->|初始化| B(PaginationHelper)
-    B --> C{获取总条目数}
-    C -->|返回长度| D[总条目数]
-    C --> E{计算总页数}
-    E -->|使用 math.ceil向上取整| F[总页数]
-    C --> G{计算每页条目数}
-    G --> H[每页条目数]
-    C --> I{计算指定页的条目数}
-    I --> J[页索引]
-    J -->|页数为负数或超过总页数| K[返回 -1]
-    J -->|最后一页| L{计算最后一页的条目数}
-    L -->|如果最后一页是满的| M[返回每页条目数]
-    L -->|否则| N[返回最后一页的条目数]
-    J -->|其他页| O[返回每页条目数]
-    C --> P{计算指定条目索引所在的页索引}
-    P -->|非法情况| Q[返回 -1]
-    P -->|合法情况| R[返回页索引]
-
-    Q -->|结束| S[错误]
-    R -->|结束| T[结束]
-
+classDiagram
+    class PaginationHelper {
+        - collection
+        - items_per_page
+        + __init__(collection, items_per_page)
+        + item_count()
+        + page_count()
+        + page_item_count(page_index)
+        + page_index(item_index)
+    }
 ```
 
 #### 第四题 向量（Vector）类
 
 ```mermaid
-graph LR
-    A[开始] -->|初始化| B(Vector)
-    B -->|将输入存储为元组| C{覆盖 __str__ 方法}
-    C --> D{检查向量是否具有相等的长度}
-    D -->|是| E{执行向量加法}
-    D -->|否| F{引发 ValueError}
-    E -->|逐元素相加| G(Vector)
-    G --> H{覆盖 __str__ 方法}
-    H --> I{检查向量是否具有相等的长度}
-    I -->|是| J{执行向量减法}
-    I -->|否| K{引发 ValueError}
-    J -->|逐元素相减| L(Vector)
-    L --> M{覆盖 __str__ 方法}
-    M --> N{检查向量是否具有相等的长度}
-    N -->|是| O{执行点积运算}
-    N -->|否| P{引发 ValueError}
-    O -->|逐元素相乘并求和| Q(Vector)
-    Q --> R{计算欧几里得范数}
-    R --> S{平方和的平方根}
-    S -->|返回范数| T(Vector)
-    T --> U{检查向量是否相等}
-    U -->|是| V{返回 True}
-    U -->|否| W{返回 False}
-    F -->|引发 ValueError| X[错误]
-    K -->|引发 ValueError| X
-    P -->|引发 ValueError| X
-    V -->|返回 True| Y[真]
-    W -->|返回 False| Z[假]
-    X -->|结束| Y
-    Y -->|结束| Z
-
+classDiagram
+    class Vector {
+        - _v: tuple
+        + __init__(iterable)
+        + __str__()
+        + check(other)
+        + add(other)
+        + subtract(other)
+        + dot(other)
+        + norm()
+        + equals(other)
+    }
 
 ```
 
 #### 第五题 Codewars风格的等级系统
 
 ```mermaid
-graph LR
-    A[Start] -->|Initialize| B(User)
-    B -->|rank = -8, rank_index = 0, progress = 0| C{Rank Index == Given Rank Index?}
-    C -->|Yes| D{Rank Index == Rank Index - 1?}
-    C -->|No| E{Rank Index > Rank Index}
-    D -->|Yes| F{Increment progress by 3}
-    D -->|No| G{Increment progress by 1}
-    E -->|Yes| H{Calculate Difference}
-    E -->|No| I{End}
-    H --> J{Increment progress by 10 * Difference^2}
-    J -->|Check if progress >= 100| K{Yes}
-    K --> L{Increment Rank Index and Set New Rank}
-    K -->|No| I
-    L -->|Set Rank to new Rank| M{Check if Rank == 8}
-    M -->|Yes| N{Reset progress to 0}
-    M -->|No| O{End}
-
-    O -->|End| P[End]
-    I -->|End| P
+classDiagram
+    class User {
+        - RANKS: list
+        - rank: int
+        - rank_index: int
+        - progress: int
+        + __init__()
+        + inc_progress()
+    }
 
 ```
 
