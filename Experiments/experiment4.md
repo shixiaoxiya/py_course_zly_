@@ -383,6 +383,8 @@ print("xiaowang's favorite number is " + str(num) + ".")
 ```
 
 ##### 运行结果
+
+```
 xiaoming's favorite number is 21.
 xiaohong's favorite number is 1.
 xiaofang's favorite number is 6.
@@ -390,7 +392,9 @@ xianoli's favorite number is 18.
 xiaowang's favorite number is 3.
 ```python
 
+
 ```
+
 #### 6-3
 
 ```pyhon
