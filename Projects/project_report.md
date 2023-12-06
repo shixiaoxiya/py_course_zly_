@@ -383,5 +383,7 @@ get_test_ship函数是一个辅助函数，用于创建一个测试用的Ship实
 ## 参考文献
 
 [1] 埃里克·马瑟斯. (2019). Python编程：从入门到实践. 人民邮电出版社.
+
 [2]Pytest官方文档：[https://docs.pytest.org/en/stable/, accessed on 2023-03-28]
+
 [3]Pytest实战指南：[https://www.jianshu.com/p/7f0f092f493f, accessed on 2023-03-28]
